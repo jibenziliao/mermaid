@@ -59,7 +59,7 @@ const init = function() {
   }
   nodes =
     nodes === undefined
-      ? document.querySelectorAll('.dber')
+      ? document.querySelectorAll('.uier')
       : typeof nodes === 'string'
       ? document.querySelectorAll(nodes)
       : nodes instanceof window.Node
@@ -88,7 +88,7 @@ const init = function() {
       continue;
     }
 
-    const id = `dber-${Date.now()}`;
+    const id = `uier-${Date.now()}`;
 
     // Fetch the graph definition including tags
     txt = element.innerHTML;
