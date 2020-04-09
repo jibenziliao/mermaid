@@ -83,6 +83,7 @@ export const getRelations = function() {
 
 export const addRelation = function(relation) {
   logger.debug('Adding relation: ' + JSON.stringify(relation));
+  logger.debug(relation);
   addClass(relation.id1);
   addClass(relation.id2);
 
@@ -125,6 +126,20 @@ export const addMember = function(className, member) {
       // Remove leading and trailing brackets
       theClass.annotations.push(memberString.substring(2, memberString.length - 2));
     } else if (memberString.indexOf(')') > 0) {
+      if (memberString.indexOf('@') > -1) {
+        logger.debug('这里发现括号:' + memberString);
+        relations.push({
+          id1: className.split('~')[0],
+          id2: memberString.split('@')[1].split('~')[0],
+          relation: {
+            type1: 'none',
+            type2: 1,
+            lineType: 0
+          },
+          relationTitle1: 'none',
+          relationTitle2: 'none'
+        });
+      }
       theClass.methods.push(memberString);
     } else if (memberString) {
       theClass.members.push(memberString);

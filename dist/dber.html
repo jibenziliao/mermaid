@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="mermaid_">
+    classDiagram
+    Class01~T~ <|-- AveryLongClass : Cool
+    &lt;&lt;interface&gt;&gt; Class01
+    Class03~T~ "0" *-- "0..n" Class04
+    Class05 "1" o-- "many" Class06
+    Class07~T~ .. Class08
+    Class09 "many" --> "1" C2  : Where am i?
+    Class09 "0" --* "1..n" C3
+    Class09 --|> Class07
+    Class07 : equals()
+    Class07 : Object[] elementData
+    Class01 : #size()
+    Class01 : -int chimp
+    Class01 : +int gorilla
+    Class08 <--> C2: Cool label
+    class Class10 {
+      &lt;&lt;service&gt;&gt;
+      int id
+      size()
+    }
+  </div>
+  <!-- user --|> role -->
+  <div class="mermaid">
+    classDiagram
+    class user~Table~{
+      userId integer default(0)
+      roleId integer
+      userName varchar(256)
+      realName varchar(256)
+      +(roleId) = (roleId)@role~Table~
+    }
+    class role~Table~{
+      roleId integer
+      roleName varchar(256)
+      description varchar(256)
+    }
+  </div>
+  <script src="./mermaid.js"></script>
+  <script>
+    mermaid.initialize({
+      theme: 'forest',
+      // themeCSS: '.node rect { fill: red; }',
+      logLevel: 1,
+      securityLevel: 'loose',
+      flowchart: { curve: 'basis' },
+      gantt: { axisFormat: '%m/%d/%Y' },
+      sequence: { actorMargin: 50 },
+      // sequenceDiagram: { actorMargin: 300 } // deprecated
+    });
+  </script>
+</body>
+</html>

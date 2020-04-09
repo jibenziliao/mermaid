@@ -59,7 +59,7 @@ export const detectType = function(text) {
     return 'er';
   }
 
-  return 'flowchart';
+  return 'class';
 };
 
 /**
