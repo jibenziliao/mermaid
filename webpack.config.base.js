@@ -37,7 +37,7 @@ export const jsConfig = () => {
     mode: 'development',
     target: 'web',
     entry: {
-      mermaid: './src/mermaid.js'
+      dber: './src/mermaid.js'
     },
     resolve: {
       extensions: ['.wasm', '.mjs', '.js', '.json', '.jison']
@@ -48,7 +48,7 @@ export const jsConfig = () => {
     output: {
       path: path.join(__dirname, './dist/'),
       filename: '[name].js',
-      library: 'mermaid',
+      library: 'dber',
       libraryTarget: 'umd',
       libraryExport: 'default',
       globalObject: 'typeof self !== "undefined" ? self : this'

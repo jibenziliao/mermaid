@@ -59,7 +59,7 @@ const init = function() {
   }
   nodes =
     nodes === undefined
-      ? document.querySelectorAll('.mermaid')
+      ? document.querySelectorAll('.dber')
       : typeof nodes === 'string'
       ? document.querySelectorAll(nodes)
       : nodes instanceof window.Node
@@ -88,7 +88,7 @@ const init = function() {
       continue;
     }
 
-    const id = `mermaid-${Date.now()}`;
+    const id = `dber-${Date.now()}`;
 
     // Fetch the graph definition including tags
     txt = element.innerHTML;
