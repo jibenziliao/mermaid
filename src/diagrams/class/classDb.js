@@ -122,24 +122,26 @@ export const addMember = function(className, member) {
     // Member can contain white spaces, we trim them out
     const memberString = member.trim();
 
+    // 在这里集中处理关联关系(dber关键字为@)
+    if (memberString.indexOf('@') > -1) {
+      logger.debug('这里发现关键字@:' + memberString);
+      relations.push({
+        id1: className.split('~')[0],
+        id2: memberString.split('@')[1].split('~')[0],
+        relation: {
+          type1: 'none',
+          type2: 1,
+          lineType: 0
+        },
+        relationTitle1: 'none',
+        relationTitle2: 'none'
+      });
+    }
+
     if (memberString.startsWith('<<') && memberString.endsWith('>>')) {
       // Remove leading and trailing brackets
       theClass.annotations.push(memberString.substring(2, memberString.length - 2));
     } else if (memberString.indexOf(')') > 0) {
-      if (memberString.indexOf('@') > -1) {
-        logger.debug('这里发现括号:' + memberString);
-        relations.push({
-          id1: className.split('~')[0],
-          id2: memberString.split('@')[1].split('~')[0],
-          relation: {
-            type1: 'none',
-            type2: 1,
-            lineType: 0
-          },
-          relationTitle1: 'none',
-          relationTitle2: 'none'
-        });
-      }
       theClass.methods.push(memberString);
     } else if (memberString) {
       theClass.members.push(memberString);
